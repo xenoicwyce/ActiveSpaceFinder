@@ -402,7 +402,7 @@ def runasf_from_scf(mf: SCFclass,
             loginfo('Orbital selection for state {0:d}:'.format(root), verbose)
             loginfo('', verbose)
 
-            nel_state, mo_list_state = \
+            nel_state, mo_list_state, entropies = \
                 calc.selectOrbitals(root=root, threshold=entropy_threshold,
                                     plateau_threshold=plateau_threshold, verbose=verbose)
 
@@ -421,7 +421,7 @@ def runasf_from_scf(mf: SCFclass,
         act_sorted, mo_sorted = reorder_mos(mol, nel, mo_list, natorb_mp2)
         return nel, act_sorted, mo_sorted
     else:
-        return nel, mo_list, natorb_mp2
+        return nel, mo_list, natorb_mp2, entropies
 
 
 default_scf_settings = {

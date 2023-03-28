@@ -194,17 +194,20 @@ class ASFBase(ABC):
         if verbose:
             print(' MO    w( )    w(\u2191)    w(\u2193)    w(\u21c5)       S  sel')
 
+            ret_entropies = []
             for i in self.mo_list:
                 if i in selected_mos:
                     status = 'a'
                 else:
                     status = ' '
 
+                ret_entropies.append(entropy[i])
+
                 print('{0:3d}  {1:6.3f}  {2:6.3f}  {3:6.3f}  {4:6.3f}  {5:6.3f}  {6:>3s}'.
                       format(i, orbdens[i, 0], orbdens[i, 1], orbdens[i, 2], orbdens[i, 3],
                              entropy[i], status))
 
-        return nel, selected_mos
+        return nel, selected_mos, ret_entropies
 
 
 def calc_ncore(mol: Mole, nel_act: int) -> int:
