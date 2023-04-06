@@ -419,7 +419,7 @@ def runasf_from_scf(mf: SCFclass,
     # Return the number of active electrons, active MO indices, MP2 natural orbital coefficients.
     if sort_mos:
         act_sorted, mo_sorted = reorder_mos(mol, nel, mo_list, natorb_mp2)
-        return nel, act_sorted, mo_sorted
+        return nel, act_sorted, mo_sorted, entropies
     else:
         return nel, mo_list, natorb_mp2, entropies
 
